@@ -1,3 +1,4 @@
+import { memo } from "react";
 import {
   Container,
   LaureateName,
@@ -6,8 +7,10 @@ import {
   Category,
   Motiviation,
 } from "./styled";
+import { areEqual } from "react-window";
 
-export default function PrizeItem({ year, category, laureate }) {
+const PrizeItem = memo((props) => {
+  const { year, category, laureate } = props;
   return (
     <Container>
       <RowContainer>
@@ -18,4 +21,6 @@ export default function PrizeItem({ year, category, laureate }) {
       <Year>{year}</Year>
     </Container>
   );
-}
+}, areEqual);
+
+export default PrizeItem;
